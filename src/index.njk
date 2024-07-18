@@ -1,0 +1,36 @@
+---
+title: 11ty - Basic Site Structure
+layout: 'base.njk'
+---
+
+<section class="hero">
+  <div class="container flow">
+    <div class="hero__content flow">
+      <h1 class="section-title">Bürgerinitiative Zukunft Bernöwe</h1>
+      <p>
+        Herzlich willkommen bei der Bürgerinitiative Zukunft Bernöwe! </p>
+      <p>
+Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich für die Zukunft unserer Heimat einsetzen. Unsere Initiative strebt danach, durch nachhaltige Projekte und gemeinschaftliche Aktionen die Lebensqualität in Bernöwe zu steigern. Werden Sie Teil unserer Bewegung und helfen Sie mit, Bernöwe zu einem noch besseren Ort zum Leben zu machen.       </p>
+      <div class="flex-group">
+        <a href="#featured-articles" class="btn btn--primary">Unsere Erfolge</a>
+        <a href="/blog/" class="btn btn--neutral">Alle Neuigkeiten</a>
+      </div>
+    </div>
+    <div class="hero-image-container">
+      <a href="/assets/Sommerfest_2024_Bernoewe.png"><img src="/assets/Sommerfest_2024_Bernoewe_thumb.png" alt="" class="hero__image"/></a>
+    </div>
+  </div>
+</section>
+<section id="featured-articles" class="featured-articles">
+  <div class="container flow">
+    <h2 class="section-title text-center">Unsere Erfolge</h2>
+    <p class="text-center">
+      Was haben wir schon erreicht? Eine Auflistung unser Erfolge und regelmäßigen Veranstaltungen
+    </p>
+    <ul role="list" class="articles__list flow">
+    {%- for post in collections.featured | reverse -%}
+      {% include 'article-snippet.njk' %}
+    {% endfor %}
+    </ul>
+  </div>
+</section>

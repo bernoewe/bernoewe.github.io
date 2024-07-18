@@ -1,0 +1,21 @@
+{
+  "name": "bizb-website",
+  "version": "1.0.0",
+  "description": "Website der Bürgerinitiative Zukunft Bernöwe",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernoewe/bernoewe.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/bernoewe/bernoewe.github.io#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
