@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../../style.css">
+    
+    <title>11ty - Basic Site Structure</title>
+  </head>
+  <body>
+    <header class="page-header">
+  <div class="container">
+    <div class="page-header__content">
+      <div>
+        <a href="/">
+        <img src="/assets/logo.jpg" alt="Logo" class="logo" />
+        </a>
+      </div>
+      <nav>
+        <ul role="list" class="nav-list flex-group">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/blog/">Neuigkeiten</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main>
+      
+<section class="hero">
+  <div class="container flow">
+    <div class="hero__content flow">
+      <h1 class="section-title">Bürgerinitiative Zukunft Bernöwe</h1>
+      <p>
+        Herzlich willkommen bei der Bürgerinitiative Zukunft Bernöwe! </p>
+      <p>
+Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich für die Zukunft unserer Heimat einsetzen. Unsere Initiative strebt danach, durch nachhaltige Projekte und gemeinschaftliche Aktionen die Lebensqualität in Bernöwe zu steigern. Werden Sie Teil unserer Bewegung und helfen Sie mit, Bernöwe zu einem noch besseren Ort zum Leben zu machen.       </p>
+      <div class="flex-group">
+        <a href="#featured-articles" class="btn btn--primary">Unsere Erfolge</a>
+        <a href="/blog/" class="btn btn--neutral">Alle Neuigkeiten</a>
+      </div>
+    </div>
+    <div class="hero-image-container">
+      <a href="/assets/Sommerfest_2024_Bernoewe.png"><img src="/assets/Sommerfest_2024_Bernoewe_thumb.png" alt="" class="hero__image"/></a>
+    </div>
+  </div>
+</section>
+<section id="featured-articles" class="featured-articles">
+  <div class="container flow">
+    <h2 class="section-title text-center">Unsere Erfolge</h2>
+    <p class="text-center">
+      Was haben wir schon erreicht? Eine Auflistung unser Erfolge und regelmäßigen Veranstaltungen
+    </p>
+    <ul role="list" class="articles__list flow"><li>
+  <article class="snippet">
+    <img src="/assets/Sommerfest_2024_Bernoewe_thumb.png" alt="Sommerfest Bernöwe 2024" class="snippet__image">
+    <h3 class="snippet__title">
+      Sommerfest 2024
+    </h3>
+    <p class="snippet__meta">von
+      <span>BI.ZB</span>
+      am
+      <span>Jul 18, 2024</span>
+    </p>
+    <p class="snippet__body">Auch in diesem Jahr findet wieder unser legendäres sommerliches Dorffest statt. Am 10.08 laden wir euch herzlich zu uns nach Bernöwe ein.</p>
+    <a href="/blog/2024-07-18-sommerfest/" class="btn btn--primary">Weiterlesen</a>
+  </article>
+</li>
+    
+    </ul>
+  </div>
+</section>
+    </main>
+    <footer class="site-footer">
+  <p>© 2024 Bürgerinitiative Zukunft Bernöwe - <a href="mailto:christian.elsner71@gmail.com">christian.elsner71@gmail.com</a> - <a href="tel:0049152/25717217">+49 (0) 152/25717217</a></p>
+</footer>
+
+    
+  </body>
+</html>
