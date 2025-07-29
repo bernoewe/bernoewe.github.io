@@ -750,7 +750,7 @@ strong {
 
 /* Section Utilities */
 .section {
-  padding: min(8vh, 6rem) 0;
+  padding: min(5vh, 6rem) 0;
 }
 
 @media (max-width: 768px) {
