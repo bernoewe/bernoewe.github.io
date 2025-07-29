@@ -15,6 +15,19 @@
     </main>
     {% include 'footer.njk' %}
 
-    
+    <script>
+      // Update sticky header height for image positioning
+      function updateStickyHeaderHeight() {
+        const header = document.querySelector('.page-header');
+        if (header) {
+          const headerHeight = header.offsetHeight;
+          document.documentElement.style.setProperty('--sticky-header-height', `${headerHeight}px`);
+        }
+      }
+      
+      // Update on load and resize
+      window.addEventListener('load', updateStickyHeaderHeight);
+      window.addEventListener('resize', updateStickyHeaderHeight);
+    </script>
   </body>
 </html>
