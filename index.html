@@ -388,11 +388,23 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
   }
   
   @media (min-width: 800px) {
+    .timeline-content.card {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    
+    .timeline-content.card .card__title {
+      flex: 1;
+      text-align: left;
+    }
     
     .btn--small {
       width: auto;
-      margin-left: 1rem;
+      margin-left: 0;
       white-space: nowrap;
+      flex-shrink: 0;
     }
   }
 
