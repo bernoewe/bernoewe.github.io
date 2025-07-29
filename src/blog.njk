@@ -11,18 +11,7 @@ layout : 'base.njk'
 </section>
 
 <section class="featured-articles">
-  <div class="container flow">
-    <ul role="list" class="articles__list flow">
-    {%- for post in collections.featured | reverse -%}
-      {% include 'article-snippet.njk' %}
-    {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="section">
   <div class="container">
-    <h2 class="section-title text-center">Alle Beiträge</h2>
     <ul role="list" class="articles__list flow">
       {%- for post in collections.post | reverse -%}
         {% include 'article-snippet.njk' %}
@@ -30,4 +19,3 @@ layout : 'base.njk'
     </ul>
   </div>
 </section>
-
