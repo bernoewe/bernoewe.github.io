@@ -3,12 +3,32 @@ title : Neuigkeiten
 layout : 'base.njk'
 ---
 
-<div class="section container">
-  <h1 class="section-title">Neuigkeiten</h1>
-  <ul role="list" class="articles__list flow">
-    {%- for post in collections.post | reverse -%}
+<section class="hero-section">
+  <div class="container">
+    <h1 class="section-title text-center">Neuigkeiten</h1>
+    <p class="hero-description text-center">Was steht in Bernöwe an? Was gibt es Neues?</p>
+  </div>
+</section>
+
+<section class="featured-articles">
+  <div class="container flow">
+    <h2 class="section-title text-center">Aktuelles</h2>
+    <ul role="list" class="articles__list flow">
+    {%- for post in collections.featured | reverse -%}
       {% include 'article-snippet.njk' %}
     {% endfor %}
-  </ul>
-</div>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title text-center">Alle Beiträge</h2>
+    <ul role="list" class="articles__list flow">
+      {%- for post in collections.post | reverse -%}
+        {% include 'article-snippet.njk' %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>
 

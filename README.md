@@ -1,91 +1,93 @@
-# Website der Bürgerinitiative Zukunft Bernöwe
+# Bürgerinitiative Zukunft Bernöwe Website
 
-Die offizielle Website der Bürgerinitiative Zukunft Bernöwe (BI.ZB) - einer engagierten Gruppe von Dorfbewohnern, die sich für die Zukunft von Bernöwe einsetzen.
+The official website of Bürgerinitiative Zukunft Bernöwe (BI.ZB) - a dedicated group of village residents committed to the future of Bernöwe.
 
-## Über das Projekt
+## About the Project
 
-Diese Website dient als zentrale Informationsplattform für:
-- Aktuelle Veranstaltungen und Termine (Sommerfest, Glühweinfest, Dorfputz, etc.)
-- Erfolge und Projekte der Bürgerinitiative
-- Neuigkeiten aus dem Dorfleben
-- Informationen über die Initiative und ihre Ziele
+This website serves as a central information platform for:
+- Current events and appointments (Summer Festival, Mulled Wine Festival, Village Cleanup, etc.)
+- Achievements and projects of the citizens' initiative
+- News from village life
+- Information about the initiative and its goals
 
-## Technologie
+The website is designed as a single-page application where all main content (appointments, achievements) is accessible via anchor navigation on the homepage.
 
-Das Projekt basiert auf [Eleventy (11ty)](https://www.11ty.dev/), einem statischen Site-Generator, der Markdown-Dateien in HTML konvertiert und eine moderne Website erstellt.
+## Technology
 
-### Struktur
-- `src/` - Quelldateien
-  - `blog/` - Blog-Artikel als Markdown-Dateien
-  - `assets/` - Bilder und andere Medien
-  - `_includes/` - Nunjucks-Templates
-  - `*.njk` - Seiten-Templates
-- `public/` - Generierte statische Website
+The project is based on [Eleventy (11ty)](https://www.11ty.dev/), a static site generator that converts Markdown files to HTML and creates a modern website.
 
-## Lokale Entwicklung
+### Structure
+- `src/` - Source files
+  - `blog/` - Blog articles as Markdown files
+  - `assets/` - Images and other media
+  - `_includes/` - Nunjucks templates
+  - `*.njk` - Page templates
+- `public/` - Generated static website
 
-### Voraussetzungen
-- Node.js (Version 14 oder höher)
+## Local Development
+
+### Prerequisites
+- Node.js (Version 14 or higher)
 - npm
 
-### Installation und Start
+### Installation and Start
 
-1. Repository klonen:
+1. Clone repository:
 ```bash
 git clone https://github.com/bernoewe/bernoewe.github.io.git
 cd bernoewe.github.io
 ```
 
-2. Abhängigkeiten installieren:
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Entwicklungsserver starten:
+3. Start development server:
 ```bash
 npm start
 ```
 
-Die Website ist dann unter `http://localhost:8080` erreichbar und wird bei Änderungen automatisch neu geladen.
+The website will then be available at `http://localhost:8080` and will automatically reload when changes are made.
 
-### Build für Produktion
+### Production Build
 
 ```bash
 npm run build
 ```
 
-Dies generiert die statische Website im `public/` Ordner.
+This generates the static website in the `public/` folder.
 
 ## Content Management
 
-### Neuen Blog-Artikel erstellen
+### Creating a New Blog Article
 
-1. Neue Markdown-Datei in `src/blog/` erstellen mit dem Format `YYYY-MM-DD-titel.md`
-2. Frontmatter-Header hinzufügen:
+1. Create a new Markdown file in `src/blog/` with the format `YYYY-MM-DD-title.md`
+2. Add frontmatter header:
 ```yaml
 ---
-title: Titel des Artikels
-description: Kurze Beschreibung
+title: Article Title
+description: Short description
 author: BI.ZB
 date: 2025-01-15T12:00:00.000Z
 tags: featured
-image: /assets/bild_thumb.png
-imageAlt: Alt-Text für das Bild
+image: /assets/image_thumb.png
+imageAlt: Alt text for the image
 ---
 ```
-3. Markdown-Content hinzufügen
+3. Add Markdown content
 
-### Bilder hinzufügen
+### Adding Images
 
-1. Vollbild in `src/assets/` ablegen
-2. Thumbnail erstellen (empfohlen: 369x522px für Hauptbilder):
+1. Place full image in `src/assets/`
+2. Create thumbnail (recommended: 369x522px for main images):
 ```bash
-magick bild.jpg -resize "369x522^" -gravity center -extent 369x522 bild_thumb.png
+magick image.jpg -resize "369x522^" -gravity center -extent 369x522 image_thumb.png
 ```
 
 ## Deployment
 
-Die Website wird automatisch über GitHub Pages bereitgestellt. Bei Push auf den `main`-Branch wird die Website automatisch neu generiert und veröffentlicht.
+The website is automatically deployed via GitHub Pages. When pushing to the `main` branch, the website is automatically regenerated and published.
 
 ## Lizenz
 
