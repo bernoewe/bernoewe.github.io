@@ -7,8 +7,6 @@ tags: featured
 image: /assets/Sommerfest_2025_Bernoewe_thumb.png
 imageAlt: Sommerfest Bernöwe 2025
 ---
-# Sommerfest Bernöwe 2025
-
 ## Ein unvergessliches Dorffest erwartet euch!
 
 Am **2. August 2025** verwandelt sich Bernöwe in ein lebendiges Festgelände, wenn die Bürgerinitiative Zukunft Bernöwe (BI.ZB) und die Gaststätte »Zum Flößer« zum großen Sommerfest einladen. Hier erwartet euch ein Tag voller Musik, Tanz, Spiel und Spaß für die ganze Familie.

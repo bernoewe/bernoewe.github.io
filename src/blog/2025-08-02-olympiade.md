@@ -7,8 +7,6 @@ tags: featured
 image: /assets/termine_olympiade_2025_thumb.png
 imageAlt: Termine Olympiade 2025
 ---
-# Olympiade 2025 – Jetzt schon vormerken!
-
 ## Erntedank-Olympiade meets Sommerfest
 
 In diesem Jahr gibt es ein ganz besonderes Highlight: Die beliebte **Erntedank-Olympiade** wird **gemeinsam mit dem Sommerfest** am **2. August 2025** stattfinden! Freut euch auf spannende Wettkämpfe, gesellige Runden und jede Menge Spaß.

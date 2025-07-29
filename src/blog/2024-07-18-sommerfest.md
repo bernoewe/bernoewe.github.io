@@ -7,8 +7,6 @@ tags: featured
 image: /assets/Sommerfest_2024_Bernoewe_thumb.png
 imageAlt: Sommerfest Bernöwe 2024
 ---
-# Sommerfest Bernöwe 2024
-
 ## Ein unvergessliches Dorffest erwartet euch!
 
 Am **10. August 2024** verwandelt sich Bernöwe in ein lebendiges Festgelände, wenn die Bürgerinitiative Zukunft Bernöwe (BI.ZB) und die Gaststätte »Zum Flößer« zum großen Sommerfest einladen. Hier erwartet euch ein Tag voller Musik, Tanz, Spiel und Spaß für die ganze Familie.

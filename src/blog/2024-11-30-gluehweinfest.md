@@ -7,8 +7,6 @@ tags: featured
 image: /assets/Gluehweinfest_2024_Bernoewe_thumb.png
 imageAlt: Glühweinfest Bernöwe 2024
 ---
-# Glühweinfest Bernöwe 2024
-
 ## Ein stimmungsvoller Start in die Adventszeit!
 
 Am **30. November 2024** heißt es wieder: Zeit für geselliges Beisammensein und vorweihnachtliche Stimmung auf dem Dorfanger in Bernöwe! Die **Bürgerinitiative Zukunft Bernöwe (BI.ZB)** und die **Gaststätte "Zum Flößer"** laden euch herzlich zum **Glühweinfest** ein. Startet gemeinsam mit uns ab **15 Uhr** in die besinnliche Jahreszeit.
