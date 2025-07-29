@@ -52,9 +52,6 @@
       
 <article class="main-article">
   <div class="container container--narrow flow">
-    <h1 class="article-title">
-      Sommerfest 2024
-    </h1>
     <div class="article-content">
       <figure class="main-article__figure">
         <img src="/assets/Sommerfest_2024_Bernoewe_thumb.png" alt="Sommerfest Bernöwe 2024">
@@ -63,6 +60,9 @@
         </figcaption>
       </figure>
       <div class="article-text">
+        <h1 class="article-title">
+          Sommerfest 2024
+        </h1>
         <h2>Ein unvergessliches Dorffest erwartet euch!</h2>
 <p>Am <strong>10. August 2024</strong> verwandelt sich Bernöwe in ein lebendiges Festgelände, wenn die Bürgerinitiative Zukunft Bernöwe (BI.ZB) und die Gaststätte »Zum Flößer« zum großen Sommerfest einladen. Hier erwartet euch ein Tag voller Musik, Tanz, Spiel und Spaß für die ganze Familie.</p>
 <h3>Programmhighlights</h3>
@@ -103,6 +103,19 @@
   <p>© 2025 Bürgerinitiative Zukunft Bernöwe - <a href="mailto:christian.elsner71@gmail.com">christian.elsner71@gmail.com</a> - <a href="tel:0049152/25717217">+49 (0) 152/25717217</a></p>
 </footer>
 
-    
+    <script>
+      // Update sticky header height for image positioning
+      function updateStickyHeaderHeight() {
+        const header = document.querySelector('.page-header');
+        if (header) {
+          const headerHeight = header.offsetHeight;
+          document.documentElement.style.setProperty('--sticky-header-height', `${headerHeight}px`);
+        }
+      }
+      
+      // Update on load and resize
+      window.addEventListener('load', updateStickyHeaderHeight);
+      window.addEventListener('resize', updateStickyHeaderHeight);
+    </script>
   </body>
 </html>

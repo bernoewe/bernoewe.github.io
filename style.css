@@ -6,6 +6,9 @@
   --fs-600: 1.5rem;
   --fs-700: 2.25rem;
   --fs-800: 3rem;
+  
+  /* Sticky header height */
+  --sticky-header-height: 100px;
 
   /* Font Families */
   --ff-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -569,7 +572,7 @@ strong {
 .main-article .article-title {
   font-size: var(--fs-800);
   margin-bottom: 2rem;
-  text-align: center;
+  text-align: left;
   background: linear-gradient(135deg, var(--clr-primary-600), var(--clr-secondary-600));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -578,14 +581,20 @@ strong {
 }
 
 .article-content {
-  display: block;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
 }
 
 .main-article__figure {
-  float: left;
-  margin: 0 2rem 1rem 0;
-  max-width: 300px;
-  width: 40%;
+  flex: 0 0 300px;
+  margin: 0;
+  align-self: flex-start;
+  margin-top: calc(var(--fs-800) * 1.1 + 2rem);
+  position: sticky;
+  top: calc(var(--sticky-header-height, 100px) + 1rem);
+  max-height: calc(100vh - var(--sticky-header-height, 100px) - 2rem);
+  overflow: hidden;
 }
 
 .main-article__figure img {
@@ -607,12 +616,7 @@ strong {
 .article-text {
   text-align: justify;
   line-height: 1.7;
-}
-
-.article-text::after {
-  content: "";
-  display: table;
-  clear: both;
+  flex: 1;
 }
 
 .main-article .container {
@@ -620,7 +624,7 @@ strong {
 }
 
 .main-article h2 {
-  margin-top: 3rem;
+  margin-top: 0;
   margin-bottom: 1.5rem;
   color: var(--clr-neutral-900);
   font-size: var(--fs-600);
@@ -668,11 +672,23 @@ strong {
     line-height: 1.2;
   }
   
+  .article-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
   .main-article__figure {
-    float: none;
-    margin: 0 0 1.5rem 0;
+    flex: none;
     max-width: 100%;
-    width: 100%;
+    margin-top: 0;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    order: 2;
+  }
+  
+  .article-text {
+    order: 1;
   }
   
   .main-article__figure figcaption {

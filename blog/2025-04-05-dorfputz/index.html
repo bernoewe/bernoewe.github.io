@@ -52,9 +52,6 @@
       
 <article class="main-article">
   <div class="container container--narrow flow">
-    <h1 class="article-title">
-      Dorfputz 2025
-    </h1>
     <div class="article-content">
       <figure class="main-article__figure">
         <img src="/assets/dorfputz_2025_bernoewe_thumb.png" alt="Dorfputz Bernöwe 2025">
@@ -63,6 +60,9 @@
         </figcaption>
       </figure>
       <div class="article-text">
+        <h1 class="article-title">
+          Dorfputz 2025
+        </h1>
         <h2>Gemeinsam anpacken für ein sauberes Dorf!</h2>
 <p>Es ist wieder soweit: Am <strong>5. April 2025</strong> lädt die <strong>Bürgerinitiative Zukunft Bernöwe (BI.ZB)</strong> herzlich zum jährlichen <strong>Dorfputz</strong> ein. Treffpunkt ist um <strong>10 Uhr an der alten Feuerwache</strong>.</p>
 <p>Lasst uns gemeinsam den Ort &quot;frisch&quot; machen und Bernöwe für den Frühling herausputzen! Ob groß oder klein – jede helfende Hand ist willkommen.</p>
@@ -91,6 +91,19 @@
   <p>© 2025 Bürgerinitiative Zukunft Bernöwe - <a href="mailto:christian.elsner71@gmail.com">christian.elsner71@gmail.com</a> - <a href="tel:0049152/25717217">+49 (0) 152/25717217</a></p>
 </footer>
 
-    
+    <script>
+      // Update sticky header height for image positioning
+      function updateStickyHeaderHeight() {
+        const header = document.querySelector('.page-header');
+        if (header) {
+          const headerHeight = header.offsetHeight;
+          document.documentElement.style.setProperty('--sticky-header-height', `${headerHeight}px`);
+        }
+      }
+      
+      // Update on load and resize
+      window.addEventListener('load', updateStickyHeaderHeight);
+      window.addEventListener('resize', updateStickyHeaderHeight);
+    </script>
   </body>
 </html>
