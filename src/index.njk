@@ -11,9 +11,6 @@ layout: 'base.njk'
         Herzlich willkommen bei der Bürgerinitiative Zukunft Bernöwe! </p>
       <p>
 Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für die Zukunft unserer Heimat einsetzen. Als Bürgerinitiative organisieren wir gemeinschaftliche Veranstaltungen, Aktionen und Projekte, die das Dorfleben bereichern und die Gemeinschaft stärken. Machen Sie mit und helfen Sie uns dabei, Bernöwe zu einem noch lebenswerteren Ort zu machen.       </p>
-      <div class="flex-group">
-        <a href="/blog/" class="btn btn--primary btn--full-mobile">Alle Neuigkeiten</a>
-      </div>
     </div>
     <div class="hero-image-container">
       <a href="/assets/Sommerfest_2025_Bernoewe.png"><img src="/assets/Sommerfest_2025_Bernoewe_thumb.png" alt="Sommerfest Bernöwe 2025" class="hero__image"/></a>
@@ -23,46 +20,51 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
 
 <section id="termine" class="section bg-gradient-primary border-bottom">
   <div class="container">
-    <h2 class="section-title text-center">Termine 2025</h2>
+    <h2 class="section-title text-center" id="termine-headline">Termine <span id="current-year">2025</span></h2>
     <p class="text-center">Alle wichtigen Veranstaltungen und Termine der Bürgerinitiative Zukunft Bernöwe</p>
     
     <div class="timeline">
       <div class="vertical-line"></div>
-      
-      <div class="timeline-date">
-        <div class="date-bubble">
-          <span class="day">02</span>
-          <span class="month">Aug</span>
+      <div class="timeline-event" data-date="2025-08-02" data-time="11:00">
+        <div class="timeline-date">
+          <div class="date-bubble">
+            <span class="day">02</span>
+            <span class="month">Aug</span>
+          </div>
+          <div class="time-info">11:00 Uhr</div>
         </div>
-        <div class="time-info">11:00 Uhr</div>
-      </div>
-      <div class="timeline-content card">
-        <h3 class="card__title">Ernte Dank Olympiade</h3>
-        <a href="/blog/2025-08-02-olympiade/" class="btn btn--primary btn--small">Mehr Details</a>
+        <div class="timeline-content card">
+          <h3 class="card__title">Ernte Dank Olympiade</h3>
+          <a href="/blog/2025-08-02-olympiade/" class="btn btn--primary btn--small">Mehr Details</a>
+        </div>
       </div>
 
-      <div class="timeline-date">
-        <div class="date-bubble featured-bubble">
-          <span class="day">02</span>
-          <span class="month">Aug</span>
+      <div class="timeline-event" data-date="2025-08-02" data-time="14:00">
+        <div class="timeline-date">
+          <div class="date-bubble">
+            <span class="day">02</span>
+            <span class="month">Aug</span>
+          </div>
+          <div class="time-info">14:00 Uhr</div>
         </div>
-        <div class="time-info">14:00 Uhr</div>
-      </div>
-      <div class="timeline-content card card--featured">
-        <h3 class="card__title">Sommerfest 🎉</h3>
-        <a href="/blog/2025-06-26-sommerfest/" class="btn btn--primary btn--small">Mehr Details</a>
+        <div class="timeline-content card">
+          <h3 class="card__title">Sommerfest 🎉</h3>
+          <a href="/blog/2025-06-26-sommerfest/" class="btn btn--primary btn--small">Mehr Details</a>
+        </div>
       </div>
 
-      <div class="timeline-date">
-        <div class="date-bubble">
-          <span class="day">29</span>
-          <span class="month">Nov</span>
+      <div class="timeline-event" data-date="2025-11-29" data-time="15:00">
+        <div class="timeline-date">
+          <div class="date-bubble">
+            <span class="day">29</span>
+            <span class="month">Nov</span>
+          </div>
+          <div class="time-info">Nachmittag</div>
         </div>
-        <div class="time-info">Nachmittag</div>
-      </div>
-      <div class="timeline-content card">
-        <h3 class="card__title">Glühweinfest</h3>
-        <span class="btn btn--neutral btn--small disabled">Details folgen</span>
+        <div class="timeline-content card">
+          <h3 class="card__title">Glühweinfest</h3>
+          <span class="btn btn--neutral btn--small disabled">Details folgen</span>
+        </div>
       </div>
     </div>
 
@@ -77,16 +79,18 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
         <div class="timeline">
           <div class="vertical-line"></div>
           
-          <div class="timeline-date">
-            <div class="date-bubble past-bubble">
-              <span class="day">05</span>
-              <span class="month">Apr</span>
+          <div class="timeline-event past-event" data-date="2025-04-05" data-time="09:00">
+            <div class="timeline-date">
+              <div class="date-bubble past-bubble">
+                <span class="day">05</span>
+                <span class="month">Apr</span>
+              </div>
+              <div class="time-info">09:00 Uhr</div>
             </div>
-            <div class="time-info">09:00 Uhr</div>
-          </div>
-          <div class="timeline-content card card--past">
-            <h3 class="card__title">Dorfputz</h3>
-            <a href="/blog/2025-04-05-dorfputz/" class="btn btn--neutral btn--small">Rückblick</a>
+            <div class="timeline-content card card--past">
+              <h3 class="card__title">Dorfputz</h3>
+              <a href="/blog/2025-04-05-dorfputz/" class="btn btn--neutral btn--small">Rückblick</a>
+            </div>
           </div>
         </div>
       </div>
@@ -157,16 +161,97 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
   </div>
 </section>
 
+<section id="presse" class="section bg-gradient-primary border-bottom">
+  <div class="container">
+    <h2 class="section-title text-center">Presse-Artikel</h2>
+    <p class="text-center">Die Bürgerinitiative Zukunft Bernöwe in den Medien</p>
+    
+    <div class="card-grid achievements-cards">
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Bernöwe: Neugestaltung des Dorfangers – ein Meilenstein für den kleinen Ort</h3>
+        <p class="card__content">MAZ Online</p>
+        <a href="https://www.maz-online.de/lokales/oberhavel/oranienburg/bernoewe-neugestaltung-des-dorfangers-ein-meilenstein-fuer-den-kleinen-ort-5SYTSPH4KJBOJNJ7AJOPOIH3IE.html" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Luna möchte weiter lachen</h3>
+        <p class="card__content">MAZ Online</p>
+        <a href="https://www.maz-online.de/lokales/oberhavel/oranienburg/https-www-maz-online-delokalesoberhaveloranienburgluna-moechte-weiter-lachen-dreijaehrige-aus-34FL5V7YBZBAVDHR5MJNU4NM6Q.html" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Dorffest in Bernöwe: DKMS-Registrierungsaktion für die schwerkranke Luna</h3>
+        <p class="card__content">MAZ Online</p>
+        <a href="https://www.maz-online.de/lokales/oberhavel/oranienburg/dorffest-in-bernoewe-dkms-registrierungsaktion-fuer-die-schwerkranke-luna-HVRMX4RHPZBFFJPGVEDG5SES3Q.html" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Klein, aber fein – Bernöwes Herz wird verschönert</h3>
+        <p class="card__content">Stadt Oranienburg</p>
+        <a href="https://oranienburg.de/index.php?object=tx,2967.5&ModID=7&FID=2967.4206.1" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Vorerst kein Spielplatz in Bernöwe</h3>
+        <p class="card__content">MAZ Online</p>
+        <a href="https://m.maz-online.de/amp/news/Lokales/Oberhavel/Oranienburg/Vorerst-kein-Spielplatz-in-Bernoewe" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Bürgerinitiative erfolgreich für Bernöwe gekämpft</h3>
+        <p class="card__content">MOZ</p>
+        <a href="https://www.moz.de/lokales/oranienburg/buergerinitiative-erfolgreich-fuer-bernoewe-gekaempft-49043004.html?_XML=AMP" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Es ist vollbracht: Schottische Glockenklänge in Bernöwe</h3>
+        <p class="card__content">MAZ Online</p>
+        <a href="https://m.maz-online.de/amp/news/Lokales/Oberhavel/Oranienburg/Es-ist-vollbracht-Schottische-Glockenklaenge-in-Bernoewe" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Bürgerinitiative Bernöwer wollen einen Glockenturm</h3>
+        <p class="card__content">MOZ</p>
+        <a href="https://www.moz.de/lokales/oranienburg/buergerinitiative-bernoewer-wollen-einen-glockenturm-49150914.html?_XML=AMP" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3 class="card__title">Bürgerinitiative will Bernöwe ansehnlicher gestalten</h3>
+        <p class="card__content">Newstral</p>
+        <a href="https://newstral.com/de/article/de/1119565733/b%C3%BCrgerinitiative-will-bern%C3%B6we-ansehnlicher-gestalten" target="_blank" rel="noopener" class="btn btn--primary btn--small">Artikel lesen</a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
 <style>
   
   .timeline {
     position: relative;
     max-width: 700px;
     margin: 3rem auto;
+    padding: 0 1rem;
+  }
+  
+  .timeline-event {
     display: grid;
     grid-template-columns: 100px 1fr;
     gap: 3rem;
-    padding: 0 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .timeline-event:last-child {
+    margin-bottom: 0;
   }
   
   .vertical-line {
@@ -180,7 +265,7 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
   }
   
   @media (max-width: 768px) {
-    .timeline {
+    .timeline-event {
       grid-template-columns: 60px 1fr;
       gap: 1rem;
     }
@@ -314,6 +399,19 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
     border-color: var(--clr-neutral-200);
   }
   
+  .no-events-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--clr-neutral-600);
+    font-style: italic;
+    grid-column: 1 / -1;
+  }
+  
+  .no-events-message p {
+    font-size: var(--fs-500);
+    margin: 0;
+  }
+  
   .achievements-cards .card {
     text-align: center;
     border: 2px solid var(--clr-neutral-200);
@@ -338,6 +436,14 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
     border-color: var(--clr-primary-300);
+  }
+
+  .achievements-cards .card .btn {
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
   }
   
   @media (min-width: 800px) {
@@ -383,8 +489,146 @@ function togglePastEvents() {
   }
 }
 
+// Event Management System
+function manageEvents() {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const upcomingTimeline = document.querySelector('#termine .timeline');
+  const pastEventsContainer = document.querySelector('#pastEvents .timeline');
+  const allEvents = document.querySelectorAll('.timeline-event:not(.past-event)');
+  
+  let nextEventDate = null;
+  const eventsToMove = [];
+  const upcomingEvents = [];
+  
+  // First pass: identify past events and find next event date
+  allEvents.forEach(event => {
+    const dateStr = event.getAttribute('data-date');
+    const timeStr = event.getAttribute('data-time') || '00:00';
+    
+    if (dateStr) {
+      const eventDateTime = new Date(`${dateStr}T${timeStr}:00`);
+      const eventDate = new Date(eventDateTime.getFullYear(), eventDateTime.getMonth(), eventDateTime.getDate());
+      
+      if (eventDate < today) {
+        // Event is in the past
+        eventsToMove.push(event);
+      } else {
+        // Event is upcoming
+        upcomingEvents.push({ event, date: eventDate, dateStr });
+        
+        // Find the earliest upcoming date
+        if (!nextEventDate || eventDate < nextEventDate) {
+          nextEventDate = eventDate;
+        }
+      }
+    }
+  });
+  
+  // Second pass: highlight all events on the next event date
+  upcomingEvents.forEach(({ event, date, dateStr }) => {
+    if (nextEventDate && date.getTime() === nextEventDate.getTime()) {
+      const bubble = event.querySelector('.date-bubble');
+      const card = event.querySelector('.card');
+      
+      // Add featured styling to all events on the next date
+      bubble.classList.add('featured-bubble');
+      card.classList.add('card--featured');
+    }
+  });
+  
+  // Sort events to move by date (most recent first)
+  eventsToMove.sort((a, b) => {
+    const dateA = new Date(`${a.getAttribute('data-date')}T${a.getAttribute('data-time') || '00:00'}:00`);
+    const dateB = new Date(`${b.getAttribute('data-date')}T${b.getAttribute('data-time') || '00:00'}:00`);
+    return dateB - dateA; // Descending order (most recent first)
+  });
+  
+  // Process and move past events
+  eventsToMove.forEach(event => {
+    // Update styling for past events
+    const bubble = event.querySelector('.date-bubble');
+    const card = event.querySelector('.card');
+    const btn = event.querySelector('.btn--primary');
+    
+    bubble.classList.remove('featured-bubble');
+    bubble.classList.add('past-bubble');
+    card.classList.remove('card--featured');
+    card.classList.add('card--past');
+    
+    if (btn && !btn.classList.contains('disabled')) {
+      btn.classList.remove('btn--primary');
+      btn.classList.add('btn--neutral');
+      if (btn.textContent === 'Mehr Details') {
+        btn.textContent = 'Rückblick';
+      }
+    }
+    
+    // Add past-event class
+    event.classList.add('past-event');
+  });
+  
+  // Move events to past events section in sorted order (most recent first)
+  eventsToMove.forEach(event => {
+    pastEventsContainer.appendChild(event);
+  });
+  
+  // Re-sort all past events to maintain proper order
+  const allPastEvents = Array.from(pastEventsContainer.querySelectorAll('.timeline-event'));
+  allPastEvents.sort((a, b) => {
+    const dateA = new Date(`${a.getAttribute('data-date')}T${a.getAttribute('data-time') || '00:00'}:00`);
+    const dateB = new Date(`${b.getAttribute('data-date')}T${b.getAttribute('data-time') || '00:00'}:00`);
+    return dateB - dateA; // Descending order (most recent first)
+  });
+  
+  // Re-append all past events in correct order
+  allPastEvents.forEach(event => {
+    pastEventsContainer.appendChild(event);
+  });
+  
+  // Check if there are any upcoming events left
+  const remainingUpcomingEvents = upcomingTimeline.querySelectorAll('.timeline-event:not(.past-event)');
+  const noEventsMessage = document.getElementById('no-events-message');
+  
+  if (remainingUpcomingEvents.length === 0) {
+    // No upcoming events, show message
+    if (!noEventsMessage) {
+      const messageDiv = document.createElement('div');
+      messageDiv.id = 'no-events-message';
+      messageDiv.className = 'no-events-message';
+      messageDiv.innerHTML = '<p>Aktuell keine anstehenden Termine</p>';
+      upcomingTimeline.appendChild(messageDiv);
+    }
+  } else {
+    // There are upcoming events, hide message if it exists
+    if (noEventsMessage) {
+      noEventsMessage.remove();
+    }
+  }
+  
+  // Update past events button visibility
+  const pastEventsSection = document.querySelector('.past-events-section');
+  const hasPastEvents = pastEventsContainer.querySelectorAll('.timeline-event').length > 0;
+  
+  if (hasPastEvents) {
+    pastEventsSection.style.display = 'block';
+  } else {
+    pastEventsSection.style.display = 'none';
+  }
+}
+
 // Smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', function() {
+  // Update headline with current year
+  const currentYear = new Date().getFullYear();
+  const yearElement = document.getElementById('current-year');
+  if (yearElement) {
+    yearElement.textContent = currentYear;
+  }
+  
+  // Run event management on page load
+  manageEvents();
+  
   function scrollToElement(targetElement) {
     const header = document.querySelector('.page-header');
     const headerHeight = header ? header.offsetHeight : 0;
