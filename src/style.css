@@ -581,6 +581,9 @@ strong {
   box-shadow: var(--shadow-xl);
   transition: transform 0.3s ease-in-out;
   object-fit: contain;
+  /* Prevent layout shifts during image load */
+  display: block;
+  contain: layout;
 }
 
 .hero__image:hover {

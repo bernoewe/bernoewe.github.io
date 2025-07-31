@@ -241,6 +241,9 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
     max-width: 700px;
     margin: 3rem auto;
     padding: 0 1rem;
+    /* Prevent layout shifts during dynamic content changes */
+    contain: layout;
+    min-height: 200px; /* Reserve minimum space */
   }
   
   .timeline-event {
@@ -248,6 +251,9 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
     grid-template-columns: 100px 1fr;
     gap: 3rem;
     margin-bottom: 3rem;
+    /* Prevent layout shifts during dynamic updates */
+    contain: layout style;
+    min-height: 120px; /* Reserve minimum space for each event */
   }
   
   .timeline-event:last-child {
@@ -355,6 +361,8 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
   .past-events-section {
     margin-top: 3rem;
     text-align: center;
+    /* Prevent layout shifts when showing/hiding past events */
+    contain: layout;
   }
   
   .show-past-btn {
@@ -470,38 +478,62 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
 </style>
 
 <script>
-function togglePastEvents() {
-  const pastEvents = document.getElementById('pastEvents');
-  const btn = document.querySelector('.show-past-btn');
-  const showText = btn.querySelector('.show-text');
-  const hideText = btn.querySelector('.hide-text');
-  
-  if (pastEvents.style.display === 'none') {
-    pastEvents.style.display = 'block';
-    btn.classList.add('expanded');
-    showText.style.display = 'none';
-    hideText.style.display = 'inline';
-  } else {
-    pastEvents.style.display = 'none';
-    btn.classList.remove('expanded');
-    showText.style.display = 'inline';
-    hideText.style.display = 'none';
+// Cache DOM elements to prevent repeated queries
+let cachedElements = null;
+
+function getCachedElements() {
+  if (!cachedElements) {
+    cachedElements = {
+      pastEvents: document.getElementById('pastEvents'),
+      showPastBtn: document.querySelector('.show-past-btn'),
+      showText: document.querySelector('.show-past-btn .show-text'),
+      hideText: document.querySelector('.show-past-btn .hide-text'),
+      upcomingTimeline: document.querySelector('#termine .timeline'),
+      pastEventsContainer: document.querySelector('#pastEvents .timeline'),
+      pastEventsSection: document.querySelector('.past-events-section')
+    };
   }
+  return cachedElements;
 }
 
-// Event Management System
+function togglePastEvents() {
+  const elements = getCachedElements();
+  
+  // Batch DOM reads first
+  const isHidden = elements.pastEvents.style.display === 'none';
+  
+  // Batch DOM writes using requestAnimationFrame to prevent reflow
+  requestAnimationFrame(() => {
+    if (isHidden) {
+      elements.pastEvents.style.display = 'block';
+      elements.showPastBtn.classList.add('expanded');
+      elements.showText.style.display = 'none';
+      elements.hideText.style.display = 'inline';
+    } else {
+      elements.pastEvents.style.display = 'none';
+      elements.showPastBtn.classList.remove('expanded');
+      elements.showText.style.display = 'inline';
+      elements.hideText.style.display = 'none';
+    }
+  });
+}
+
+// Event Management System - Optimized to prevent forced reflows
 function manageEvents() {
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const upcomingTimeline = document.querySelector('#termine .timeline');
-  const pastEventsContainer = document.querySelector('#pastEvents .timeline');
-  const allEvents = document.querySelectorAll('.timeline-event:not(.past-event)');
+  const elements = getCachedElements();
+  
+  // Batch all DOM reads first to prevent layout thrashing
+  const allEvents = Array.from(elements.upcomingTimeline.querySelectorAll('.timeline-event:not(.past-event)'));
+  const existingNoEventsMessage = document.getElementById('no-events-message');
   
   let nextEventDate = null;
   const eventsToMove = [];
   const upcomingEvents = [];
+  const domUpdates = []; // Batch all DOM writes
   
-  // First pass: identify past events and find next event date
+  // First pass: identify past events and find next event date (DOM reads only)
   allEvents.forEach(event => {
     const dateStr = event.getAttribute('data-date');
     const timeStr = event.getAttribute('data-time') || '00:00';
@@ -511,13 +543,9 @@ function manageEvents() {
       const eventDate = new Date(eventDateTime.getFullYear(), eventDateTime.getMonth(), eventDateTime.getDate());
       
       if (eventDate < today) {
-        // Event is in the past
-        eventsToMove.push(event);
+        eventsToMove.push({ event, eventDateTime });
       } else {
-        // Event is upcoming
         upcomingEvents.push({ event, date: eventDate, dateStr });
-        
-        // Find the earliest upcoming date
         if (!nextEventDate || eventDate < nextEventDate) {
           nextEventDate = eventDate;
         }
@@ -525,96 +553,95 @@ function manageEvents() {
     }
   });
   
-  // Second pass: highlight all events on the next event date
-  upcomingEvents.forEach(({ event, date, dateStr }) => {
+  // Sort past events by date (most recent first)
+  eventsToMove.sort((a, b) => b.eventDateTime - a.eventDateTime);
+  
+  // Prepare DOM updates for upcoming events highlighting
+  upcomingEvents.forEach(({ event, date }) => {
     if (nextEventDate && date.getTime() === nextEventDate.getTime()) {
+      domUpdates.push(() => {
+        const bubble = event.querySelector('.date-bubble');
+        const card = event.querySelector('.card');
+        bubble.classList.add('featured-bubble');
+        card.classList.add('card--featured');
+      });
+    }
+  });
+  
+  // Prepare DOM updates for past events styling
+  eventsToMove.forEach(({ event }) => {
+    domUpdates.push(() => {
       const bubble = event.querySelector('.date-bubble');
       const card = event.querySelector('.card');
+      const btn = event.querySelector('.btn--primary');
       
-      // Add featured styling to all events on the next date
-      bubble.classList.add('featured-bubble');
-      card.classList.add('card--featured');
-    }
-  });
-  
-  // Sort events to move by date (most recent first)
-  eventsToMove.sort((a, b) => {
-    const dateA = new Date(`${a.getAttribute('data-date')}T${a.getAttribute('data-time') || '00:00'}:00`);
-    const dateB = new Date(`${b.getAttribute('data-date')}T${b.getAttribute('data-time') || '00:00'}:00`);
-    return dateB - dateA; // Descending order (most recent first)
-  });
-  
-  // Process and move past events
-  eventsToMove.forEach(event => {
-    // Update styling for past events
-    const bubble = event.querySelector('.date-bubble');
-    const card = event.querySelector('.card');
-    const btn = event.querySelector('.btn--primary');
-    
-    bubble.classList.remove('featured-bubble');
-    bubble.classList.add('past-bubble');
-    card.classList.remove('card--featured');
-    card.classList.add('card--past');
-    
-    if (btn && !btn.classList.contains('disabled')) {
-      btn.classList.remove('btn--primary');
-      btn.classList.add('btn--neutral');
-      if (btn.textContent === 'Mehr Details') {
-        btn.textContent = 'Rückblick';
+      bubble.classList.remove('featured-bubble');
+      bubble.classList.add('past-bubble');
+      card.classList.remove('card--featured');
+      card.classList.add('card--past');
+      
+      if (btn && !btn.classList.contains('disabled')) {
+        btn.classList.remove('btn--primary');
+        btn.classList.add('btn--neutral');
+        if (btn.textContent === 'Mehr Details') {
+          btn.textContent = 'Rückblick';
+        }
       }
+      
+      event.classList.add('past-event');
+    });
+  });
+  
+  // Prepare DOM fragment for batch appendChild operations
+  const pastEventFragment = document.createDocumentFragment();
+  eventsToMove.forEach(({ event }) => {
+    pastEventFragment.appendChild(event);
+  });
+  
+  // Get existing past events for re-sorting
+  const existingPastEvents = Array.from(elements.pastEventsContainer.querySelectorAll('.timeline-event'));
+  const allPastEventsData = [...existingPastEvents, ...eventsToMove.map(e => e.event)]
+    .map(event => ({
+      event,
+      date: new Date(`${event.getAttribute('data-date')}T${event.getAttribute('data-time') || '00:00'}:00`)
+    }))
+    .sort((a, b) => b.date - a.date);
+  
+  // Prepare final DOM updates
+  const remainingUpcomingCount = upcomingEvents.length;
+  
+  // Execute all DOM writes in a single requestAnimationFrame
+  requestAnimationFrame(() => {
+    // Apply all styling updates
+    domUpdates.forEach(update => update());
+    
+    // Move events to past events section (single batch operation)
+    if (pastEventFragment.children.length > 0) {
+      elements.pastEventsContainer.appendChild(pastEventFragment);
     }
     
-    // Add past-event class
-    event.classList.add('past-event');
-  });
-  
-  // Move events to past events section in sorted order (most recent first)
-  eventsToMove.forEach(event => {
-    pastEventsContainer.appendChild(event);
-  });
-  
-  // Re-sort all past events to maintain proper order
-  const allPastEvents = Array.from(pastEventsContainer.querySelectorAll('.timeline-event'));
-  allPastEvents.sort((a, b) => {
-    const dateA = new Date(`${a.getAttribute('data-date')}T${a.getAttribute('data-time') || '00:00'}:00`);
-    const dateB = new Date(`${b.getAttribute('data-date')}T${b.getAttribute('data-time') || '00:00'}:00`);
-    return dateB - dateA; // Descending order (most recent first)
-  });
-  
-  // Re-append all past events in correct order
-  allPastEvents.forEach(event => {
-    pastEventsContainer.appendChild(event);
-  });
-  
-  // Check if there are any upcoming events left
-  const remainingUpcomingEvents = upcomingTimeline.querySelectorAll('.timeline-event:not(.past-event)');
-  const noEventsMessage = document.getElementById('no-events-message');
-  
-  if (remainingUpcomingEvents.length === 0) {
-    // No upcoming events, show message
-    if (!noEventsMessage) {
-      const messageDiv = document.createElement('div');
-      messageDiv.id = 'no-events-message';
-      messageDiv.className = 'no-events-message';
-      messageDiv.innerHTML = '<p>Aktuell keine anstehenden Termine</p>';
-      upcomingTimeline.appendChild(messageDiv);
+    // Re-sort all past events (batch operation)
+    allPastEventsData.forEach(({ event }) => {
+      elements.pastEventsContainer.appendChild(event);
+    });
+    
+    // Handle no events message
+    if (remainingUpcomingCount === 0) {
+      if (!existingNoEventsMessage) {
+        const messageDiv = document.createElement('div');
+        messageDiv.id = 'no-events-message';
+        messageDiv.className = 'no-events-message';
+        messageDiv.innerHTML = '<p>Aktuell keine anstehenden Termine</p>';
+        elements.upcomingTimeline.appendChild(messageDiv);
+      }
+    } else if (existingNoEventsMessage) {
+      existingNoEventsMessage.remove();
     }
-  } else {
-    // There are upcoming events, hide message if it exists
-    if (noEventsMessage) {
-      noEventsMessage.remove();
-    }
-  }
-  
-  // Update past events button visibility
-  const pastEventsSection = document.querySelector('.past-events-section');
-  const hasPastEvents = pastEventsContainer.querySelectorAll('.timeline-event').length > 0;
-  
-  if (hasPastEvents) {
-    pastEventsSection.style.display = 'block';
-  } else {
-    pastEventsSection.style.display = 'none';
-  }
+    
+    // Update past events section visibility
+    const hasPastEvents = allPastEventsData.length > 0;
+    elements.pastEventsSection.style.display = hasPastEvents ? 'block' : 'none';
+  });
 }
 
 // Smooth scrolling for anchor links
@@ -626,8 +653,13 @@ document.addEventListener('DOMContentLoaded', function() {
     yearElement.textContent = currentYear;
   }
   
-  // Run event management on page load
-  manageEvents();
+  // Defer event management to prevent layout shifts during initial load
+  // Wait for layout to be stable before manipulating DOM
+  setTimeout(() => {
+    requestAnimationFrame(() => {
+      manageEvents();
+    });
+  }, 100);
   
   // Native browser smooth scrolling with CSS scroll-behavior handles anchor links automatically
 });
