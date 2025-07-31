@@ -379,16 +379,21 @@ strong {
   margin-bottom: -0.25rem;
 }
 
+
+/* Active navigation styles - match hover styles exactly */
+.nav-list a.nav-active,
 .nav-list a:focus,
 .nav-list a:hover {
   color: var(--clr-primary-600);
   background: linear-gradient(135deg, var(--clr-primary-50), var(--clr-secondary-50));
 }
 
+.nav-list a.nav-active::before,
 .nav-list a:hover::before {
   opacity: 1;
 }
 
+.nav-list a.nav-active .nav-icon,
 .nav-list a:hover .nav-icon {
   transform: scale(1.1);
 }

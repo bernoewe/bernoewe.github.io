@@ -72,6 +72,54 @@
       }
       
       window.addEventListener('load', initContacts);
+
+      // Scroll spy for navigation
+      function initScrollSpy() {
+        const navLinks = document.querySelectorAll('.nav-list a[href*="#"]:not([href="/"])');
+        const sections = document.querySelectorAll('section[id]');
+        
+        if (!navLinks.length || !sections.length) return;
+
+        const HEADER_OFFSET = 150;
+        let ticking = false;
+
+        function updateActiveNav() {
+          const scrollPos = window.scrollY;
+          let currentSection = '';
+          
+          // Find current section
+          for (const section of sections) {
+            const { offsetTop, offsetHeight } = section;
+            if (scrollPos >= offsetTop - HEADER_OFFSET && 
+                scrollPos < offsetTop + offsetHeight - HEADER_OFFSET) {
+              currentSection = section.id;
+              break;
+            }
+          }
+          
+          // Update nav links
+          navLinks.forEach(link => {
+            const isActive = currentSection && link.href.includes('#' + currentSection);
+            link.classList.toggle('nav-active', isActive);
+          });
+        }
+
+        function throttledUpdate() {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              updateActiveNav();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }
+
+        updateActiveNav();
+        window.addEventListener('scroll', throttledUpdate, { passive: true });
+        window.addEventListener('hashchange', updateActiveNav);
+      }
+
+      document.addEventListener('DOMContentLoaded', initScrollSpy);
     </script>
   </body>
 </html>
