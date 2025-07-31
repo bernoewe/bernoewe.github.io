@@ -138,9 +138,16 @@ picture {
   display: block;
 }
 
+/* Prevent layout shifts by reserving space */
+img {
+  height: auto;
+  aspect-ratio: attr(width) / attr(height);
+}
+
 img.logo {
   max-width: 75px;
   height: auto;
+  aspect-ratio: 1;
   background: transparent;
   mix-blend-mode: multiply;
   filter: contrast(1.2) brightness(1.1);
@@ -534,6 +541,7 @@ strong {
   width: 100%;
   max-width: 400px;
   height: auto;
+  aspect-ratio: 369 / 522;
   border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow-xl);
   transition: transform 0.3s ease-in-out;
@@ -796,11 +804,13 @@ strong {
 /* Section Utilities */
 .section {
   padding: min(5vh, 6rem) 0;
+  contain: layout style;
 }
 
 @media (max-width: 768px) {
   .section {
     padding: min(4vh, 2rem) 0;
+    contain: layout style;
   }
 }
 

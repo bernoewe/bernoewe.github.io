@@ -41,7 +41,7 @@ module.exports = function(eleventyConfig){
   });
 
   // Image optimization function
-  async function imageShortcode(src, alt, className = "", sizes = "100vw") {
+  async function imageShortcode(src, alt, className = "", sizes = "100vw", loading = "lazy") {
     if (!src) {
       throw new Error(`Missing \`src\` on image from: ${src}`);
     }
@@ -69,7 +69,7 @@ module.exports = function(eleventyConfig){
       alt,
       class: className,
       sizes,
-      loading: "lazy",
+      loading,
       decoding: "async",
     };
 
