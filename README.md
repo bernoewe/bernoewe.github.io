@@ -85,10 +85,26 @@ imageAlt: Alt text for the image
 magick image.jpg -resize "369x522^" -gravity center -extent 369x522 image_thumb.png
 ```
 
+## Configuration
+
+### Changing Contact Information
+
+To update the email address and phone number in the footer:
+
+1. Navigate to `src/_includes/footer.njk`
+2. Update the `data-email` attribute with base64-encoded reversed email
+3. Update the `data-phone` attribute with base64-encoded reversed phone number
+
+**Example process:**
+- Email: `john@example.com` → reverse: `moc.elpmaxe@nhoj` → base64: `bW9jLmVscG1heGVAbmhvag==`
+- Phone: `+1234567890` → reverse: `0987654321+` → base64: `MDk4NzY1NDMyMSs=`
+
+The JavaScript decoder will automatically handle the decoding process.
+
 ## Deployment
 
 The website is automatically deployed via GitHub Pages. When pushing to the `main` branch, the website is automatically regenerated and published.
 
-## Lizenz
+## License
 
 ISC License

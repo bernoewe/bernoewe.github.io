@@ -469,6 +469,25 @@ strong {
   text-decoration: inherit;
 }
 
+.footer-contact {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.contact-item {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .footer-contact {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
 /* Homepage */
 
 .hero {
