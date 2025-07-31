@@ -13,7 +13,7 @@ layout: 'base.njk'
 Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für die Zukunft unserer Heimat einsetzen. Als Bürgerinitiative organisieren wir gemeinschaftliche Veranstaltungen, Aktionen und Projekte, die das Dorfleben bereichern und die Gemeinschaft stärken. Machen Sie mit und helfen Sie uns dabei, Bernöwe zu einem noch lebenswerteren Ort zu machen.       </p>
     </div>
     <div class="hero-image-container">
-      <a href="{{ '/assets/Sommerfest_2025_Bernoewe.png' | asset }}">{% image "/assets/Sommerfest_2025_Bernoewe_thumb.png", "Sommerfest Bernöwe 2025", "hero__image", "100vw", "eager" %}</a>
+      <a href="{{ '/assets/Sommerfest_2025_Bernoewe.png' | asset }}">{% image "/assets/Sommerfest_2025_Bernoewe_thumb.png", "Sommerfest Bernöwe 2025", "hero__image", "100vw", "eager", "high" %}</a>
     </div>
   </div>
 </section>
@@ -629,41 +629,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Run event management on page load
   manageEvents();
   
-  function scrollToElement(targetElement) {
-    const header = document.querySelector('.page-header');
-    const headerHeight = header ? header.offsetHeight : 0;
-    const targetPosition = targetElement.offsetTop - headerHeight;
-    
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-  }
-  
-  // Handle anchor links that start with /#
-  document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(2); // Remove /#
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        scrollToElement(targetElement);
-      }
-    });
-  });
-  
-  // Handle direct anchor links on the same page
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1); // Remove #
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        scrollToElement(targetElement);
-      }
-    });
-  });
+  // Native browser smooth scrolling with CSS scroll-behavior handles anchor links automatically
 });
 </script>

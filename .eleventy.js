@@ -41,7 +41,7 @@ module.exports = function(eleventyConfig){
   });
 
   // Image optimization function
-  async function imageShortcode(src, alt, className = "", sizes = "100vw", loading = "lazy") {
+  async function imageShortcode(src, alt, className = "", sizes = "100vw", loading = "lazy", fetchpriority = "") {
     if (!src) {
       throw new Error(`Missing \`src\` on image from: ${src}`);
     }
@@ -56,7 +56,7 @@ module.exports = function(eleventyConfig){
 
     const metadata = await Image(imageSrc, {
       widths: [300, 600, 900, 1200, "auto"], // Generate multiple sizes + original
-      formats: ["avif", "webp", "auto"], // Modern formats + fallback
+      formats: ["avif", "webp", "auto"], // AVIF first for LCP optimization
       outputDir: "./public/assets/images/",
       urlPath: "/assets/images/",
       sharpOptions: {
@@ -72,6 +72,11 @@ module.exports = function(eleventyConfig){
       loading,
       decoding: "async",
     };
+
+    // Add fetchpriority if specified
+    if (fetchpriority) {
+      imageAttributes.fetchpriority = fetchpriority;
+    }
 
     return Image.generateHTML(metadata, imageAttributes);
   }
