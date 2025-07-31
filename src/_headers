@@ -1,0 +1,24 @@
+# Cache optimization headers for static assets
+# This file provides cache recommendations for potential hosting migration
+
+# Static assets (images, fonts, etc.) - 1 year cache with versioning
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  
+# CSS and JS files - 1 year cache with versioning  
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+  
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages - No cache to ensure updates are seen immediately
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  
+/**/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Blog posts - Short cache since they might be updated
+/blog/*
+  Cache-Control: public, max-age=3600, must-revalidate

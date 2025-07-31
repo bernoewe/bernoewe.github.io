@@ -139,8 +139,8 @@ picture {
 }
 
 img.logo {
-  max-width: 100px;
-  max-height: 75px;
+  max-width: 75px;
+  height: auto;
   background: transparent;
   mix-blend-mode: multiply;
   filter: contrast(1.2) brightness(1.1);
@@ -418,8 +418,8 @@ strong {
   }
   
   img.logo {
-    max-width: 75px;
-    max-height: 55px;
+    max-width: 55px;
+    height: auto;
   }
 }
 
@@ -940,21 +940,21 @@ strong {
 }
 
 .btn--primary {
-  background: var(--clr-primary-600);
-  color: var(--clr-neutral-100);
+  background: var(--clr-primary-700);
+  color: white;
   box-shadow: var(--shadow-sm);
 }
 
 .btn--primary:hover,
 .btn--primary:focus {
-  background: var(--clr-primary-700);
+  background: var(--clr-primary-800);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 
 .btn--neutral {
   background-color: var(--clr-neutral-100);
-  color: var(--clr-neutral-700);
+  color: var(--clr-neutral-900);
   border: 2px solid var(--clr-neutral-300);
   box-shadow: var(--shadow-sm);
 }
