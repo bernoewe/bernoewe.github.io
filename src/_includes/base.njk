@@ -38,37 +38,42 @@
     <script>
       // Simple bot protection for contact info - Optimized to prevent reflows
       function initContacts() {
-        // Batch DOM queries and reads first
-        const emailEl = document.querySelector('[data-email]');
-        const phoneEl = document.querySelector('[data-phone]');
-        
-        // Prepare all data transformations before DOM writes
-        const updates = [];
-        
-        if (emailEl) {
-          const email = atob(emailEl.getAttribute('data-email')).split('').reverse().join('');
-          updates.push(() => {
-            emailEl.textContent = email;
-            emailEl.parentElement.href = 'mailto:' + email;
-            emailEl.parentElement.onclick = null;
-          });
-        }
-        
-        if (phoneEl) {
-          const phone = atob(phoneEl.getAttribute('data-phone')).split('').reverse().join('');
-          updates.push(() => {
-            phoneEl.textContent = phone;
-            phoneEl.parentElement.href = 'tel:' + phone;
-            phoneEl.parentElement.onclick = null;
-          });
-        }
-        
-        // Batch all DOM writes to prevent reflows
-        if (updates.length > 0) {
-          requestAnimationFrame(() => {
-            updates.forEach(update => update());
-          });
-        }
+        // Use setTimeout to defer execution until after other layout operations
+        setTimeout(() => {
+          // Batch DOM queries and reads first
+          const emailEl = document.querySelector('[data-email]');
+          const phoneEl = document.querySelector('[data-phone]');
+          
+          // Prepare all data transformations before DOM writes
+          const updates = [];
+          
+          if (emailEl) {
+            const email = atob(emailEl.getAttribute('data-email')).split('').reverse().join('');
+            updates.push(() => {
+              emailEl.textContent = email;
+              emailEl.parentElement.href = 'mailto:' + email;
+              emailEl.parentElement.onclick = null;
+            });
+          }
+          
+          if (phoneEl) {
+            const phone = atob(phoneEl.getAttribute('data-phone')).split('').reverse().join('');
+            updates.push(() => {
+              phoneEl.textContent = phone;
+              phoneEl.parentElement.href = 'tel:' + phone;
+              phoneEl.parentElement.onclick = null;
+            });
+          }
+          
+          // Double-raf technique for maximum layout isolation
+          if (updates.length > 0) {
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                updates.forEach(update => update());
+              });
+            });
+          }
+        }, 0);
       }
       
       window.addEventListener('load', initContacts);
