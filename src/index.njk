@@ -98,6 +98,47 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
   </div>
 </section>
 
+<section id="ueber-bernoewe" class="section border-bottom">
+  <div class="container">
+    <h2 class="section-title text-center">Über Bernöwe</h2>
+    <div class="location-content">
+      <div class="location-info">
+        <p>Bernöwe ist ein charmanter Ortsteil der Stadt Oranienburg in Brandenburg, etwa 35 Kilometer nördlich von Berlin gelegen. Unser kleines Dorf liegt direkt am beliebten Berlin-Kopenhagen-Radweg und bietet Radtouristen einen perfekten Rastplatz.</p>
+        
+        <div class="location-details">
+          <div class="detail-item">
+            <span class="detail-icon">📍</span>
+            <div>
+              <strong>Lage:</strong> Dorfplatz Bernöwe,<br>Bernöwer Str. 8, 16515 Oranienburg
+              <button class="copy-icon-btn" onclick="copyAddressForNavigation()" title="Adresse für Navigation kopieren">
+                <span class="copy-icon">📋</span>
+              </button>
+            </div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🚴</span>
+            <div>
+              <strong>Berlin-Kopenhagen-Radweg:</strong><br>
+              Perfekter Rastplatz mit E-Bike-Ladestation
+            </div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🚗</span>
+            <div>
+              <strong>Anfahrt:</strong><br>
+              Ca. 35 km nördlich von Berlin
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="map-container">
+        <div id="map" class="interactive-map"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="erfolge" class="section bg-gradient-primary border-bottom">
   <div class="container">
     <h2 class="section-title text-center">Unsere Erfolge</h2>
@@ -474,6 +515,162 @@ Wir sind eine engagierte Gruppe von Dorfbewohnern, die sich ehrenamtlich für di
       flex-shrink: 0;
     }
   }
+  
+  /* Location Section Styles */
+  .location-content {
+    display: grid;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .location-content {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+  }
+  
+  .location-info p {
+    font-size: var(--fs-500);
+    line-height: 1.6;
+    color: var(--clr-neutral-700);
+    margin-bottom: 1.5rem;
+  }
+  
+  .location-details {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--clr-neutral-50);
+    border-radius: var(--border-radius-lg);
+    border-left: 4px solid var(--clr-primary-500);
+  }
+  
+  .detail-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  .detail-item div {
+    color: var(--clr-neutral-700);
+    line-height: 1.4;
+  }
+  
+  .detail-item strong {
+    color: var(--clr-neutral-900);
+    font-weight: var(--fw-600);
+  }
+  
+  .copy-icon-btn {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: baseline;
+  }
+  
+  .copy-icon-btn:hover {
+    background-color: var(--clr-neutral-100);
+    transform: scale(1.15);
+  }
+  
+  .copy-icon-btn:active {
+    background-color: var(--clr-neutral-200);
+  }
+  
+  .copy-icon-btn.copied {
+    background-color: var(--clr-secondary-100);
+  }
+  
+  .copy-icon {
+    font-size: 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+  }
+  
+  .map-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .map-container {
+      justify-content: space-between;
+    }
+  }
+  
+  .interactive-map {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--clr-neutral-200);
+    box-shadow: var(--shadow-md);
+  }
+  
+  @media (min-width: 768px) {
+    .interactive-map {
+      flex: 1;
+      height: auto;
+      min-height: 350px;
+    }
+  }
+  
+  
+  /* Custom map marker styles */
+  .custom-marker {
+    background: none;
+    border: none;
+  }
+  
+  .marker-pin {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--clr-primary-600), var(--clr-secondary-600));
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--clr-neutral-100);
+  }
+  
+  .marker-icon {
+    transform: rotate(45deg);
+    font-size: 1rem;
+  }
+  
+  /* Map popup styles */
+  .map-popup {
+    text-align: center;
+    padding: 0.5rem;
+  }
+  
+  .map-popup strong {
+    color: var(--clr-primary-700);
+    font-weight: var(--fw-600);
+  }
+  
+  .map-popup small {
+    color: var(--clr-neutral-600);
+    font-size: 0.875rem;
+  }
 
 </style>
 
@@ -644,7 +841,135 @@ function manageEvents() {
   });
 }
 
-// Smooth scrolling for anchor links
+// Native browser smooth scrolling with CSS scroll-behavior handles anchor links automatically
+
+// OpenStreetMap Integration
+function initializeMap() {
+  // Check if map container exists
+  const mapContainer = document.getElementById('map');
+  if (!mapContainer) return;
+  
+  // Bernöwe coordinates (exact location)  
+  const bernoeweCoords = [52.814117, 13.337153];
+  
+  // Create map
+  const map = L.map('map', {
+    center: bernoeweCoords,
+    zoom: 15,
+    scrollWheelZoom: false, // Prevent accidental scrolling
+    zoomControl: true
+  });
+  
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19
+  }).addTo(map);
+  
+  // Custom marker icon for Dorfplatz
+  const dorfplatzIcon = L.divIcon({
+    className: 'custom-marker',
+    html: '<div class="marker-pin"><span class="marker-icon">🏛️</span></div>',
+    iconSize: [30, 30],
+    iconAnchor: [15, 15]
+  });
+  
+  // Add marker for Dorfplatz
+  const dorfplatzMarker = L.marker(bernoeweCoords, { icon: dorfplatzIcon }).addTo(map);
+  dorfplatzMarker.bindPopup(`
+    <div class="map-popup">
+      <strong>Dorfplatz Bernöwe</strong><br>
+      <small>Herz unseres Ortes mit E-Bike-Ladestation</small>
+    </div>
+  `);
+  
+  
+  // Enable scroll wheel zoom when map is clicked
+  map.on('click', function() {
+    map.scrollWheelZoom.enable();
+  });
+  
+  // Disable scroll wheel zoom when mouse leaves map
+  map.on('mouseout', function() {
+    map.scrollWheelZoom.disable();
+  });
+}
+
+// Copy address for navigation
+function copyAddressForNavigation() {
+  const address = "Bernöwer Str. 8, 16515 Oranienburg";
+  const textToCopy = address;
+  
+  // Try to use the modern Clipboard API
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      showCopySuccess();
+    }).catch(() => {
+      // Fallback to older method
+      fallbackCopyText(textToCopy);
+    });
+  } else {
+    // Fallback for older browsers or non-HTTPS
+    fallbackCopyText(textToCopy);
+  }
+}
+
+function fallbackCopyText(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-999999px';
+  textArea.style.top = '-999999px';
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  
+  try {
+    document.execCommand('copy');
+    showCopySuccess();
+  } catch (err) {
+    console.error('Failed to copy text:', err);
+    // Silent fail - just log the error
+  } finally {
+    document.body.removeChild(textArea);
+  }
+}
+
+function showCopySuccess() {
+  const btn = document.querySelector('.copy-icon-btn');
+  const icon = btn.querySelector('.copy-icon');
+  
+  // Show success state
+  btn.classList.add('copied');
+  icon.textContent = '✓';
+  
+  // Reset after 1.5 seconds
+  setTimeout(() => {
+    btn.classList.remove('copied');
+    icon.textContent = '📋';
+  }, 1500);
+}
+
+// Load Leaflet CSS and JS, then initialize map
+function loadMapResources() {
+  // Load Leaflet CSS
+  const leafletCSS = document.createElement('link');
+  leafletCSS.rel = 'stylesheet';
+  leafletCSS.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+  leafletCSS.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+  leafletCSS.crossOrigin = '';
+  document.head.appendChild(leafletCSS);
+  
+  // Load Leaflet JS
+  const leafletJS = document.createElement('script');
+  leafletJS.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  leafletJS.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+  leafletJS.crossOrigin = '';
+  leafletJS.onload = initializeMap;
+  document.head.appendChild(leafletJS);
+}
+
+// Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   // Update headline with current year
   const currentYear = new Date().getFullYear();
@@ -653,14 +978,16 @@ document.addEventListener('DOMContentLoaded', function() {
     yearElement.textContent = currentYear;
   }
   
+  // Check if we're on a page with a map and load resources
+  if (document.getElementById('map')) {
+    loadMapResources();
+  }
+  
   // Defer event management to prevent layout shifts during initial load
-  // Wait for layout to be stable before manipulating DOM
   setTimeout(() => {
     requestAnimationFrame(() => {
       manageEvents();
     });
   }, 100);
-  
-  // Native browser smooth scrolling with CSS scroll-behavior handles anchor links automatically
 });
 </script>
